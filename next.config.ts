@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Evita que `next dev` reescriba/anexe reglas en nuestro CLAUDE.md (spec propia del proyecto).
+  agentRules: false,
 };
 
 export default nextConfig;

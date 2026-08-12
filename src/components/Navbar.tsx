@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { nav } from "@/data/content";
 
 export default function Navbar() {
@@ -10,11 +11,15 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="flex items-center justify-between px-6 md:px-10 py-5">
-        <Link
-          href="#top"
-          className="font-display text-2xl tracking-widest text-white"
-        >
-          {nav.brand}
+        <Link href="#top" aria-label={nav.brand} className="shrink-0">
+          <Image
+            src="/images/logo/logo.png"
+            alt={nav.brand}
+            width={173}
+            height={32}
+            priority
+            className="h-7 w-auto md:h-8"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -22,7 +27,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm uppercase tracking-wide text-white/80 hover:text-white transition-colors"
+              className="text-sm font-bold uppercase tracking-wide text-chica-rose transition-colors [-webkit-text-stroke:0.5px_white] hover:text-white"
             >
               {link.label}
             </Link>
@@ -59,7 +64,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-2xl uppercase tracking-wide text-white"
+              className="text-2xl font-bold uppercase tracking-wide text-chica-rose"
             >
               {link.label}
             </Link>
