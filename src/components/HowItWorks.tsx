@@ -81,7 +81,7 @@ export default function HowItWorks() {
     <section id="como-funciona" className="bg-white px-6 text-chica-carbon md:px-10">
       <div className="pt-24 text-center">
         <h2 className="font-display text-4xl tracking-widest md:text-6xl">
-          CÓMO FUNCIONA
+          ¿CÓMO FUNCIONA?
         </h2>
       </div>
       {howItWorks.map((step, i) => (

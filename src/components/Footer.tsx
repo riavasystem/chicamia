@@ -109,10 +109,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6">
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/40">
             © {new Date().getFullYear()} {footer.brand}. Todos los derechos reservados.
           </p>
+          <a
+            href="https://www.riava.cl/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-white/40 transition-colors hover:text-chica-rose"
+          >
+            Página hecha con precisión por riava.cl
+          </a>
         </div>
       </div>
     </footer>

@@ -35,7 +35,7 @@ export default function HorizontalGallery({ services }: HorizontalGalleryProps) 
       id="galeria"
       className="relative h-screen overflow-hidden bg-chica-carbon"
     >
-      <p className="absolute left-6 top-8 z-10 font-display text-2xl tracking-widest text-white md:left-10">
+      <p className="absolute left-6 top-20 z-10 font-display text-2xl tracking-widest text-white md:left-10">
         GALERÍA DE EXPERIENCIAS
       </p>
       <div
@@ -70,7 +70,7 @@ export default function HorizontalGallery({ services }: HorizontalGalleryProps) 
         ))}
       </div>
 
-      <ServiceGalleryModal service={activeService} onClose={() => setActiveService(null)} />
+      <ServiceGalleryModal key={activeService?.id ?? "closed"} service={activeService} onClose={() => setActiveService(null)} />
     </section>
   );
 }

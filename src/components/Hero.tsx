@@ -10,8 +10,7 @@ import ScrollIndicator from "./ScrollIndicator";
 import { InstagramIcon, FacebookIcon } from "./icons";
 
 const noopSubscribe = () => () => {};
-const getShowVideoSnapshot = () =>
-  window.matchMedia("(min-width: 768px)").matches && !prefersReducedMotion();
+const getShowVideoSnapshot = () => !prefersReducedMotion();
 const getShowVideoServerSnapshot = () => false;
 
 export default function Hero() {
@@ -21,8 +20,7 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
-  // Video de fondo solo en pantallas grandes y sin prefers-reduced-motion
-  // (CLAUDE.md §36/§38: cuidar el peso en móvil y respetar reduced motion).
+  // Video de fondo en toda pantalla, salvo con prefers-reduced-motion activo.
   // useSyncExternalStore evita el mismatch de hidratación: el server siempre
   // asume "sin video" y el cliente resuelve el valor real tras montar.
   const showVideo = useSyncExternalStore(

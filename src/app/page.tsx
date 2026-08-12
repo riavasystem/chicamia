@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
 import ManifestoSection from "@/components/ManifestoSection";
 import ExperiencesIntro from "@/components/ExperiencesIntro";
@@ -18,7 +17,6 @@ import { services } from "@/data/services";
 export default function Home() {
   return (
     <>
-      <Preloader />
       <Navbar />
 
       <main className="flex-1">

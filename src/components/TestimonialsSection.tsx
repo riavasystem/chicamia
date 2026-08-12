@@ -16,7 +16,7 @@ function initials(name: string) {
 
 function TestimonialCard({ name, event, quote }: (typeof testimonials)[number]) {
   return (
-    <div className="w-52 shrink-0 rounded-lg border border-white/10 bg-chica-carbon p-4">
+    <div className="w-40 shrink-0 rounded-lg border border-white/10 bg-chica-carbon p-4 md:w-52">
       <div className="flex items-center gap-2.5">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-chica-rose to-chica-purple text-xs font-semibold text-white">
           {initials(name)}
@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-24 text-chica-carbon">
+    <section ref={sectionRef} className="bg-white py-14 text-chica-carbon md:py-16">
       <div className="testimonials-reveal px-6 md:px-10">
         <p className="text-sm uppercase tracking-[0.4em] text-chica-rose">Testimonios</p>
         <h2 className="mt-3 font-display text-4xl tracking-wide md:text-6xl">
@@ -66,26 +66,26 @@ export default function TestimonialsSection() {
         </h2>
       </div>
 
-      <div className="testimonials-reveal relative mt-24 flex h-96 w-full flex-row items-center overflow-hidden perspective-near md:mt-28">
+      <div className="testimonials-reveal relative mt-10 flex h-[55vh] w-full flex-row items-stretch overflow-hidden perspective-near md:h-[75vh]">
         <div
-          className="flex w-full flex-row items-center justify-between gap-4 px-6 transform-none md:px-10 md:transform-[translateY(0px)_translateZ(-100px)_rotateX(20deg)_rotateY(-10deg)_rotateZ(10deg)]"
+          className="flex h-full w-full flex-row items-stretch justify-center gap-3 px-6 transform-none md:justify-between md:gap-4 md:px-10 md:transform-[scale(1.35)_rotateX(25deg)_rotateY(-8deg)]"
         >
-          <Marquee vertical pauseOnHover repeat={3} className="flex-1 [--duration:40s]">
+          <Marquee vertical pauseOnHover repeat={3} className="flex-1 [--duration:40s] md:flex-1">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
             ))}
           </Marquee>
-          <Marquee vertical pauseOnHover reverse repeat={3} className="flex-1 [--duration:40s]">
+          <Marquee vertical pauseOnHover reverse repeat={3} className="flex-1 [--duration:40s] md:flex-1">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
             ))}
           </Marquee>
-          <Marquee vertical pauseOnHover repeat={3} className="flex-1 [--duration:40s]">
+          <Marquee vertical pauseOnHover repeat={3} className="hidden flex-1 [--duration:40s] sm:flex">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
             ))}
           </Marquee>
-          <Marquee vertical pauseOnHover reverse repeat={3} className="flex-1 [--duration:40s]">
+          <Marquee vertical pauseOnHover reverse repeat={3} className="hidden flex-1 [--duration:40s] sm:flex">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
             ))}

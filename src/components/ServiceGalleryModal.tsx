@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Service } from "@/data/services";
 import { cn } from "@/lib/utils";
 import PlaceholderMedia from "./PlaceholderMedia";
@@ -10,13 +11,14 @@ interface ServiceGalleryModalProps {
   onClose: () => void;
 }
 
+/**
+ * El padre debe montar este componente con `key={service.id}` — así React lo
+ * remonta al cambiar de servicio y `index` arranca en 0 sin necesitar un
+ * efecto que resetee estado.
+ */
 export default function ServiceGalleryModal({ service, onClose }: ServiceGalleryModalProps) {
   const [index, setIndex] = useState(0);
   const images = service ? [service.heroImage, ...service.actionImages] : [];
-
-  useEffect(() => {
-    setIndex(0);
-  }, [service]);
 
   useEffect(() => {
     if (!service) return;
@@ -38,19 +40,19 @@ export default function ServiceGalleryModal({ service, onClose }: ServiceGallery
 
   if (!service) return null;
 
-  return (
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-label={`Galería de fotos — ${service.title}`}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-chica-carbon/95 px-6 py-10 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-chica-carbon/95 px-6 py-10 backdrop-blur-sm"
       onClick={onClose}
     >
       <button
         type="button"
         onClick={onClose}
         aria-label="Cerrar galería"
-        className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-chica-rose hover:text-chica-rose"
+        className="absolute right-6 top-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-chica-rose hover:text-chica-rose"
       >
         ✕
       </button>
@@ -106,6 +108,7 @@ export default function ServiceGalleryModal({ service, onClose }: ServiceGallery
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
